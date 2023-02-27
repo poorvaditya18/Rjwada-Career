@@ -3,8 +3,6 @@ const bodyParser = require("body-parser");
 const connect = require("./config/database");
 const { PORT } = require("./config/serverConfig");
 
-const DevelopmentService = require("./services/development-services");
-
 const CareerRoutes = require("./routes/index");
 
 const app = express();

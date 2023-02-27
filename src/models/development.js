@@ -52,6 +52,8 @@ const DevelopmentSchema = new mongoose.Schema(
     Resume: {
       type: mongoose.Schema.Types.Mixed,
       binData: Buffer,
+      required: true,
+      unique: true,
     },
 
     CoverLetter: {

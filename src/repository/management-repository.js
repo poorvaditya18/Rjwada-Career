@@ -1,7 +1,6 @@
-const Development = require("../models/development");
-const { use } = require("../routes");
+const Management = require("../models/management");
 
-class DevelopmentRepository {
+class ManagementRepository {
   //filter
   #createFilter(data) {
     let filter = {};
@@ -26,7 +25,7 @@ class DevelopmentRepository {
   // create user
   async create(data) {
     try {
-      const user = await Development.create(data);
+      const user = await Management.create(data);
       return user;
     } catch (error) {
       console.log(error);
@@ -36,7 +35,7 @@ class DevelopmentRepository {
   //get user by userid
   async getById(userId) {
     try {
-      const user = await Development.findById(userId);
+      const user = await Management.findById(userId);
       return user;
     } catch (error) {
       console.log(error);
@@ -46,7 +45,7 @@ class DevelopmentRepository {
   //get user by useremail
   async getByEmail(userEmail) {
     try {
-      const user = await Development.find({ EmailId: userEmail });
+      const user = await Management.find({ EmailId: userEmail });
       return user;
     } catch (error) {
       console.log(error);
@@ -57,18 +56,7 @@ class DevelopmentRepository {
   async getByFilter(filter) {
     try {
       const filterObject = this.#createFilter(filter);
-      const user = await Development.find(filterObject);
-      return user;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async updateUser(userId, data) {
-    try {
-      const user = await Development.findByIdAndUpdate(userId, data, {
-        new: true,
-      });
+      const user = await Management.find(filterObject);
       return user;
     } catch (error) {
       console.log(error);
@@ -76,4 +64,4 @@ class DevelopmentRepository {
   }
 }
 
-module.exports = DevelopmentRepository;
+module.exports = ManagementRepository;

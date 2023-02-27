@@ -5,6 +5,7 @@ class DevelopmentService {
     this.developmentRepository = new DevelopmentRepository();
   }
 
+  //create
   async create(data) {
     try {
       const user = await this.developmentRepository.create(data);
@@ -14,9 +15,21 @@ class DevelopmentService {
       console.log(error);
     }
   }
-  async getUser(data) {
+
+  //get users based on filter
+  async getFilterUser(data) {
     try {
       const user = await this.developmentRepository.getByFilter(data);
+      return user;
+    } catch (error) {
+      console.log("Something went Wrong in Service Layer");
+      console.log(error);
+    }
+  }
+
+  async updateUser(userId, data) {
+    try {
+      const user = await this.developmentRepository.updateUser(userId, data);
       return user;
     } catch (error) {
       console.log("Something went Wrong in Service Layer");
