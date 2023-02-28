@@ -16,7 +16,7 @@ router.post(
 router.get("/development", developmentController.getFilterUser);
 
 //updateUser --> ?
-router.patch("/development/:id", developmentController.updateUser);
+router.patch("/development", developmentController.update);
 
 //management
 router.post(

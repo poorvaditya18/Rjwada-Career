@@ -27,9 +27,10 @@ class DevelopmentService {
     }
   }
 
+  //update user
   async updateUser(userId, data) {
     try {
-      const user = await this.developmentRepository.updateUser(userId, data);
+      const user = await this.developmentRepository.update(userId, data);
       return user;
     } catch (error) {
       console.log("Something went Wrong in Service Layer");

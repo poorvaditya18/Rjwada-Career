@@ -5,6 +5,8 @@ const { PORT } = require("./config/serverConfig");
 
 const CareerRoutes = require("./routes/index");
 
+const DevelopmentService = require("./services/development-services");
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -18,6 +20,10 @@ app.listen(PORT, async () => {
   console.log("MongoDB connected");
 
   // let repo = new DevelopmentService();
+  // const result = await repo.updateUser("63fca3359f8888327858300d", {
+  //   Position: "FullTime",
+  // });
+  // console.log(result);
   // const result = await repo.getUser({
   //   JobId: "#FS123",
   // });

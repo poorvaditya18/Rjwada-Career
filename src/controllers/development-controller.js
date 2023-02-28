@@ -1,7 +1,8 @@
 const DevelopmentService = require("../services/development-services");
-const mongoose = require("mongoose");
+
 const developmentService = new DevelopmentService();
 
+//create user
 const create = async (req, res) => {
   try {
     console.log(req.body);
@@ -30,12 +31,13 @@ const create = async (req, res) => {
   }
 };
 
+// get user based on Filter
 const getFilterUser = async (req, res) => {
   try {
     const response = await developmentService.getFilterUser(req.query);
     return res.status(201).json({
       success: true,
-      message: "Successfully created User",
+      message: "Successfully Fetched  User",
       data: response,
       err: {},
     });
@@ -43,22 +45,26 @@ const getFilterUser = async (req, res) => {
     console.log(error);
     return res.status(500).json({
       success: true,
-      message: "Not able to create user",
+      message: "Not able to Fetch user",
       data: {},
       err: error,
     });
   }
 };
 
-const updateUser = async (req, res) => {
+//update User
+const update = async (req, res) => {
   try {
+    console.log(req);
+    console.log(req.query.id);
     const response = await developmentService.updateUser(
-      req.params.id,
+      req.query.id,
       req.body
     );
+
     return res.status(201).json({
       success: true,
-      message: "Successfully created User",
+      message: "Successfully Updated User",
       data: response,
       err: {},
     });
@@ -66,11 +72,11 @@ const updateUser = async (req, res) => {
     console.log(error);
     return res.status(500).json({
       success: true,
-      message: "Not able to create user",
+      message: "Not able to update user",
       data: {},
       err: error,
     });
   }
 };
 
-module.exports = { create, getFilterUser, updateUser };
+module.exports = { create, getFilterUser, update };

@@ -64,14 +64,15 @@ class DevelopmentRepository {
     }
   }
 
-  async updateUser(userId, data) {
+  async update(id, data) {
     try {
-      const user = await Development.findByIdAndUpdate(userId, data, {
+      const result = await Development.findByIdAndUpdate(id, data, {
         new: true,
       });
-      return user;
+      return result;
     } catch (error) {
-      console.log(error);
+      console.log("Something went wrong in crud repo");
+      throw error;
     }
   }
 }
